@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import kranti from './assets/kranti.jpg';
+import gucci from './assets/guccibag1.jpg';
 
 const UserCard = () => {
   return (
@@ -14,6 +15,22 @@ const UserCard = () => {
       <p className = "role"> MERN full stack developer </p>
       <p className = "email"> krantipariyar08@gmail.com</p>
       <button className='btn'>Profile</button>
+    </div>
+  );
+};
+
+const ProductCard = () => {
+  return (
+    <div className='card product-card'>
+      <img
+      src = {gucci}
+      alt = "Product Image"
+      className = "product-img"
+      />
+      <h3>GG Emblem small shoulder bag</h3>
+      <p className='price'>NPR 25,000</p>
+      <p className='description'>This unmistakable pattern decorates this small handbag as part of the latest Ophidia collection. A Double G hardware completes the style </p>
+      <button className='btn buy-btn'>Buy now</button>
     </div>
   );
 };
@@ -32,6 +49,13 @@ function App() {
         <h2>User Card</h2>
         <div className='card-grid'>
           <UserCard/>
+        </div>
+      </section>
+
+      <section className='section'>
+        <h2>Product Card</h2>
+        <div className='card-grid'>
+          <ProductCard/>
         </div>
       </section>
     </main>
