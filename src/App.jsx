@@ -1,76 +1,98 @@
-import { useState } from 'react'
-import './App.css'
-import kranti from './assets/kranti.jpg';
-import gucci from './assets/guccibag1.jpg';
-
-const UserCard = () => {
-  return (
-    <div className = "card user-card">
-      <img 
-      src = {kranti}
-      alt = "User Profile"
-      className = 'avatar'
-      />
-      <h3>Kranti Pariyar</h3>
-      <p className = "role"> MERN full stack developer </p>
-      <p className = "email"> krantipariyar08@gmail.com</p>
-      <button className='btn'>Profile</button>
-    </div>
-  );
-};
-
-const ProductCard = () => {
-  return (
-    <div className='card product-card'>
-      <img
-      src = {gucci}
-      alt = "Product Image"
-      className = "product-img"
-      />
-      <h3>GG Emblem small shoulder bag</h3>
-      <p className='price'>NPR 25,000</p>
-      <p className='description'>This unmistakable pattern decorates this small handbag as part of the latest Ophidia collection. A Double G hardware completes the style </p>
-      <button className='btn buy-btn'>Buy now</button>
-    </div>
-  );
-};
-
+import { useState } from "react";
+import "./App.css";
+import Greet from "./components/greet";
+import kranti from "./assets/kranti.jpg";
+import gucci from "./assets/guccibag1.jpg";
+import UserCard from "./components/userCard";
+import ProductCard from "./components/productCard";
 
 function App() {
-    // let x = 5;
-    // let y = 10;
+  // let x = 5;
+  // let y = 10;
+  const user = { name: "Kranti Pariyar", email: "kranti@gmail", active: true };
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    console.log(e.target);
+    console.log("Clicked");
+  };
+
   return (
-    <main className='box'>
+    <main
+      onClick={(e) => {
+        console.log("main");
+        console.log(e.target);
+      }}
+      className="box"
+    >
       <h1>Hello World!</h1>
       {/* <P>{ x + y }</P> */}
-      <Greet/>
+      <Greet />
 
-      <section className='section'>
+      {/* <UserCard user = {{name = "Kranti Pariyar", email = "kranti@gmail.com", active : false}} /> */}
+      <UserCard user={user} />
+
+      <ProductCard name="GG Emblem small shoulder bag" />
+
+      {/* <section className='section'>
         <h2>User Card</h2>
         <div className='card-grid'>
-          <UserCard/>
+          <UserCard />
         </div>
       </section>
 
       <section className='section'>
         <h2>Product Card</h2>
         <div className='card-grid'>
-          <ProductCard/>
+          <ProductCard />
         </div>
-      </section>
+      </section> */}
+
+      <div
+        style={{
+          height: "200px",
+          width: "200px",
+          border: "1px solid gray",
+        }}
+        onClick={(e) => {
+          console.log("Parent clicked");
+          console.log(e.target);
+        }}
+      >
+        <button
+          name="click_me"
+          onClick={handleClick}
+          onMouseEnter={() => {
+            console.log("mouse enter");
+          }}
+          onMouseLeave={() => {
+            console.log("mouse leave");
+          }}
+        >
+          Click me
+        </button>
+      </div>
+
+      <input
+        name="full_name"
+        type="text"
+        placeholder="Enter full name"
+        onChange={(e) => {
+          console.log("Input changed");
+          console.log(e.target.value);
+        }}
+        onFocus={() => {
+          console.log("Focus");
+        }}
+        onBlur={() => {
+          console.log("Blur");
+        }}
+      ></input>
     </main>
   );
 }
 
 export default App;
-
-const Greet = () => {
-  return (
-    <div>
-    <h2>Good morning everyone</h2>
-    </div>
-  );
-};
 
 // user card
 // product card
@@ -90,3 +112,7 @@ const Greet = () => {
 // pseudo class : :active, :hover, :focus
 // pseudo elements : ::placeholder, ::selection, ::before, ::after
 
+// form -> submit -> onSubmit
+// event delegation
+// event capturing
+// event bubbling advantage/disadvantage
