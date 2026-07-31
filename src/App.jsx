@@ -5,29 +5,50 @@ import kranti from "./assets/kranti.jpg";
 import gucci from "./assets/guccibag1.jpg";
 import UserCard from "./components/userCard";
 import ProductCard from "./components/productCard";
+import Button from "./components/button";
+import Counter from "./components/counter";
+import Dashboard from "./components/dashboard";
 
 function App() {
   // let x = 5;
   // let y = 10;
-  const user = { name: "Kranti Pariyar", email: "kranti@gmail", active: true };
+  const isLoggedIn = true;
 
-  const handleClick = (e) => {
-    e.stopPropagation();
-    console.log(e.target);
-    console.log("Clicked");
+  const user = {
+    name: "Kranti Pariyar",
+    email: "kranti@gmail",
+    active: true
   };
+
+  // const handleClick = (e) => {
+  //   e.stopPropagation();
+  //   console.log(e.target);
+  //   console.log("Clicked");
+  // };
 
   return (
     <main
-      onClick={(e) => {
-        console.log("main");
-        console.log(e.target);
-      }}
+      // onClick={(e) => {
+      //   console.log("main");
+      //   console.log(e.target);
+      // }}
       className="box"
     >
-      <h1>Hello World!</h1>
+      <h1 className="" id="">Hello World!</h1>
+
       {/* <P>{ x + y }</P> */}
-      <Greet />
+
+      <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
+
+      <Counter/>
+
+      <Dashboard isLoggedIn={true} error={null} role={"Admin"} />
+      { isLoggedIn ? <Button label="Dashboard" /> : <Button label="Login" /> }
+      <Button label="Register" />
+      <br />
+      <Button label = "Manage Users"/>
+      
+
 
       {/* <UserCard user = {{name = "Kranti Pariyar", email = "kranti@gmail.com", active : false}} /> */}
       <UserCard user={user} />
@@ -48,7 +69,7 @@ function App() {
         </div>
       </section> */}
 
-      <div
+      {/* <div
         style={{
           height: "200px",
           width: "200px",
@@ -71,7 +92,7 @@ function App() {
         >
           Click me
         </button>
-      </div>
+      </div> */}
 
       <input
         name="full_name"
