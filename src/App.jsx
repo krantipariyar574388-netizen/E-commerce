@@ -10,6 +10,20 @@ import Counter from "./components/counter";
 import Dashboard from "./components/dashboard";
 
 function App() {
+
+    const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with value : ", inputValue);
+  };
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    // console.log(e.target);
+    console.log("Clicked");
+  };
+  
   // let x = 5;
   // let y = 10;
   const isLoggedIn = true;
@@ -19,12 +33,6 @@ function App() {
     email: "kranti@gmail",
     active: true
   };
-
-  // const handleClick = (e) => {
-  //   e.stopPropagation();
-  //   console.log(e.target);
-  //   console.log("Clicked");
-  // };
 
   return (
     <main
@@ -48,6 +56,7 @@ function App() {
       <br />
       <Button label = "Manage Users"/>
       
+      
 
 
       {/* <UserCard user = {{name = "Kranti Pariyar", email = "kranti@gmail.com", active : false}} /> */}
@@ -69,7 +78,7 @@ function App() {
         </div>
       </section> */}
 
-      {/* <div
+       <div
         style={{
           height: "200px",
           width: "200px",
@@ -80,7 +89,17 @@ function App() {
           console.log(e.target);
         }}
       >
+        <form onSubmit= {handleSubmit}>
+      <input
+      type = "text"
+      value= {inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      placeholder="Enter something..."
+      />
+    </form>
+
         <button
+        type="submit"
           name="click_me"
           onClick={handleClick}
           onMouseEnter={() => {
@@ -92,7 +111,7 @@ function App() {
         >
           Click me
         </button>
-      </div> */}
+      </div> 
 
       <input
         name="full_name"
