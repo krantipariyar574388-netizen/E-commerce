@@ -1,19 +1,18 @@
-const Button = ({ label = "Button" }) => {
+const style = {
+  minWidth: "130px",
+  borderRadius: "6px",
+  background: "#0a66f1",
+  fontWeight: 700,
+  fontSize: "20px",
+  letterSpacing: "0.3px",
+  color: "#ffff",
+  padding: "10px",
+  border: "none",
+  cursor: "pointer",
+};
+const Button = ({ label = "Button", type = "button" }) => {
   return (
-    <button
-      style={{
-        minWidth: "130px",
-        borderRadius: "6px",
-        background: "#0c41ee",
-        fontWeight: 700,
-        fontSize: "20px",
-        letterSpacing: "0.3px",
-        color: "#ffff",
-        padding: "10px",
-        border: "none",
-        cursor: "pointer",
-      }}
-    >
+    <button style={style} type={type}>
       {label}
     </button>
   );

@@ -8,6 +8,7 @@ import ProductCard from "./components/productCard";
 import Button from "./components/button";
 import Counter from "./components/counter";
 import Dashboard from "./components/dashboard";
+import RegisterForm from "./components/registerForm";
 
 function App() {
 
@@ -42,13 +43,20 @@ function App() {
       // }}
       className="box"
     >
+      <RegisterForm />
+
       <h1 className="" id="">Hello World!</h1>
+      
 
       {/* <P>{ x + y }</P> */}
 
       <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
 
+      
+
       <Counter/>
+
+      
 
       <Dashboard isLoggedIn={true} error={null} role={"Admin"} />
       { isLoggedIn ? <Button label="Dashboard" /> : <Button label="Login" /> }
@@ -89,29 +97,19 @@ function App() {
           console.log(e.target);
         }}
       >
-        <form onSubmit= {handleSubmit}>
-      <input
-      type = "text"
-      value= {inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
-      placeholder="Enter something..."
-      />
-    </form>
-
-        <button
-        type="submit"
-          name="click_me"
-          onClick={handleClick}
-          onMouseEnter={() => {
-            console.log("mouse enter");
-          }}
-          onMouseLeave={() => {
-            console.log("mouse leave");
-          }}
-        >
-          Click me
-        </button>
-      </div> 
+        {/* // <button
+        // type="submit"
+        //   name="click_me"
+        //   onClick={handleClick}
+        //   onMouseEnter={() => {
+        //     console.log("mouse enter");
+        //   }}
+        //   onMouseLeave={() => {
+        //     console.log("mouse leave");
+        //   }}
+        // > Click me
+        </button>)} */}
+      </div>  
 
       <input
         name="full_name"

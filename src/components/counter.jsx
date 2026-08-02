@@ -18,14 +18,14 @@ const Counter = () => {
   let [count, setCount] = useState(0);
   const onIncrement = () => {
     setCount(count + 1);
-    setCount(count + 1);
+    // setCount(count + 1);
     console.log(count);
   };
 
   const onDecrement = () => {
     // count--;
-    setCount(count - 1);
-    setCount(count - 1);
+    setCount((count) => { return count - 1}); 
+    // setCount((count) => { return count - 1});
     console.log(count);
   };
 
