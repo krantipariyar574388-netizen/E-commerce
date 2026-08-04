@@ -54,7 +54,7 @@ function App() {
 
       
 
-      <Counter/>
+      <Counter />
 
       
 
@@ -154,3 +154,10 @@ export default App;
 // event delegation
 // event capturing
 // event bubbling advantage/disadvantage
+
+
+// SPA || MPA
+// DOM
+// VDOM
+// Rendering
+// CSR & SSR

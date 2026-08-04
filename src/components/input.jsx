@@ -1,4 +1,4 @@
-const Input = ({ onChange, label, id, name, placeholder, type = 'text' }) => {
+const Input = ({ onChange, label, id, name, placeholder, type = 'text', error }) => {
     return (
         <div
             style={{
@@ -21,6 +21,7 @@ const Input = ({ onChange, label, id, name, placeholder, type = 'text' }) => {
                 placeholder={placeholder}
                 onChange={onChange}
                 required />
+                <small style={{color :"red", fontSize :"12px", marginTop : "-10px"}}>{error}</small>
         </div>
 
     )
