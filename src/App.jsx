@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Greet from "./components/greet";
 import kranti from "./assets/kranti.jpg";
@@ -13,6 +13,9 @@ import RegisterForm from "./components/registerForm";
 function App() {
 
     const [inputValue, setInputValue] = useState("");
+    const [text, setText] = useState("");
+    const [count, setCount] = useState(0);
+    const [users, setUsers] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +38,37 @@ function App() {
     active: true
   };
 
+  console.log("app re render");
+  //useEffect : api call , timer, event listener, subscription, localstorage
+
+  // every re render
+  // useEffect(() => {
+  //   console.log("effect run");
+  // });
+
+  // first render
+  useEffect(() => {
+    console.log("First render");
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch (
+          "https://jsonplaceholder.typicode.com/users",
+        );
+        const data = await response.json();
+        console.log(data);
+        setUsers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUsers();
+  },[]);
+
+  //when dependency changed
+  // useEffect(() => {
+  //   console.log("effect run");
+  // },[text, count]);
+
   return (
     <main
       // onClick={(e) => {
@@ -52,7 +86,26 @@ function App() {
 
       <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
 
-      
+      <input
+        name="full_name"
+        type="text"
+        placeholder="Enter full name"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+      ></input>
+      <section style = {{display : "flex", gap : "20px", flexWrap : "wrap"}}>
+        {
+          users.map((user)=> {
+            return <UserCard key={user.id} user={user} />;
+          })}
+      </section>
+
+      <Button
+      onClick={() =>{
+        setCount(count+1);
+      }}
+      label="Re render" />
 
       <Counter />
 

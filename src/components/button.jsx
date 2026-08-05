@@ -10,9 +10,9 @@ const style = {
   border: "none",
   cursor: "pointer",
 };
-const Button = ({ label = "Button", type = "button" }) => {
+const Button = ({ label = "Button", type = "button", onClick }) => {
   return (
-    <button style={style} type={type}>
+    <button onClick={onClick} style={style} type={type}>
       {label}
     </button>
   );
