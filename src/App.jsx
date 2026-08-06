@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import "./App.css";
 import Greet from "./components/greet";
 import kranti from "./assets/kranti.jpg";
@@ -69,6 +69,30 @@ function App() {
   //   console.log("effect run");
   // },[text, count]);
 
+  // useMemo
+  // const result = useMemo(() => {
+  //   console.log("calculating");
+  //   let total = 10;
+  //   for ( let i = 1; i <= 99999999; i++) {
+  //     // total +=1
+  //   }
+  //   return total * count + 1;
+  // }, [count]);
+
+  //useCallback
+    const calculate = useCallback(() => {
+    console.log("calculating");
+    let total = 10;
+    for ( let i = 1; i <= 99999999; i++) {
+      // total +=1
+    }
+    return total * count + 1;
+  }, [count]);
+
+  const result = useMemo(() => {
+    return (calculate);
+  },[calculate]);
+
   return (
     <main
       // onClick={(e) => {
@@ -80,11 +104,20 @@ function App() {
       <RegisterForm />
 
       <h1 className="" id="">Hello World!</h1>
+      <h1>{count}</h1>
+      <h1>{result}</h1>
+      <Button
+      onClick={() =>{
+        setCount(count+1);
+      }}
+      label="Re render" />
       
 
       {/* <P>{ x + y }</P> */}
 
       <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
+
+      
 
       <input
         name="full_name"
@@ -101,11 +134,6 @@ function App() {
           })}
       </section>
 
-      <Button
-      onClick={() =>{
-        setCount(count+1);
-      }}
-      label="Re render" />
 
       <Counter />
 
