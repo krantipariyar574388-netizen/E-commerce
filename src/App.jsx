@@ -1,9 +1,30 @@
 import "./App.css";
+import AboutPage from "./pages/aboutPage";
+import ContactPage from "./pages/contactPage";
 import HomePage from "./pages/homePage";
+import NotFound from "./pages/not-found";
+import Nav from "./components/nav";
+import ProductDetailPage from "./pages/productDetailPage";
+import ProductPage from "./pages/productPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 function App() {
   return <main>
-    <HomePage />
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path = "/" element = {<HomePage />} />
+        <Route path = "/about" element = {<AboutPage />} />
+        <Route path = "/product" element = {<ProductPage />} />
+        <Route path = "/contact" element = {<ContactPage />} />
+
+        {/* dynamic */}
+        <Route path = "/products/:id" element={<ProductDetailPage />} />
+
+        {/* page not found */}
+        <Route path = "*" element = {<NotFound />} />
+      </Routes>
+    </Router>
   </main>
 }
 

@@ -144,8 +144,6 @@ const HomePage = () => {
 
       <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
 
-      
-
       <input
         ref={inputRef}
         name="full_name"
@@ -162,11 +160,7 @@ const HomePage = () => {
           })}
       </section>
 
-
       <Counter />
-
-
-      
 
       <Dashboard isLoggedIn={true} error={null} role={"Admin"} />
       { isLoggedIn ? <Button label="Dashboard" /> : <Button label="Login" /> }
@@ -174,9 +168,6 @@ const HomePage = () => {
       <br />
       <Button label = "Manage Users"/>
       
-      
-
-
       {/* <UserCard user = {{name = "Kranti Pariyar", email = "kranti@gmail.com", active : false}} /> */}
       <UserCard user={user} />
 
