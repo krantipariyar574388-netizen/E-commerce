@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import "./App.css";
 import Greet from "./components/greet";
 import kranti from "./assets/kranti.jpg";
@@ -16,6 +16,7 @@ function App() {
     const [text, setText] = useState("");
     const [count, setCount] = useState(0);
     const [users, setUsers] = useState([]);
+    const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,6 +80,12 @@ function App() {
   //   return total * count + 1;
   // }, [count]);
 
+  useEffect(() => {
+        inputRef.current.focus();
+        inputRef.current.style.color = "red";
+        inputRef.current.style.borderColor = "red";
+        }, []);
+
   //useCallback
     const calculate = useCallback(() => {
     console.log("calculating");
@@ -90,8 +97,13 @@ function App() {
   }, [count]);
 
   const result = useMemo(() => {
-    return (calculate);
-  },[calculate]);
+    console.log("calculating");
+    let total = 10;
+    for (let i = 1; i <= 999999999; i++) {
+      // total += i;
+    }
+    return total * count + 1;
+  }, [count]);
 
   return (
     <main
@@ -101,16 +113,25 @@ function App() {
       // }}
       className="box"
     >
-      <RegisterForm />
+      
 
       <h1 className="" id="">Hello World!</h1>
+      <RegisterForm />
+      <p>{count}</p>
       <h1>{count}</h1>
       <h1>{result}</h1>
+      {/* <p>{countRef.current}</p> */}
       <Button
       onClick={() =>{
         setCount(count+1);
       }}
       label="Re render" />
+      <Button
+        onClick={() => {
+          countRef.current++;
+        }}
+        label="Count Ref"
+      />
       
 
       {/* <P>{ x + y }</P> */}
@@ -120,6 +141,7 @@ function App() {
       
 
       <input
+        ref={inputRef}
         name="full_name"
         type="text"
         placeholder="Enter full name"
@@ -127,7 +149,7 @@ function App() {
           setText(e.target.value);
         }}
       ></input>
-      <section style = {{display : "flex", gap : "20px", flexWrap : "wrap"}}>
+      <section style = {{display : "flex", gap : "20px", flexWrap : "wrap", margin : "40px"}}>
         {
           users.map((user)=> {
             return <UserCard key={user.id} user={user} />;
@@ -136,6 +158,7 @@ function App() {
 
 
       <Counter />
+
 
       
 
