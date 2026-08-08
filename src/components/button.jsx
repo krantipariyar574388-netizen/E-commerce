@@ -1,11 +1,11 @@
 const style = {
   minWidth: "130px",
   borderRadius: "6px",
-  background: "#0a66f1",
+  background: "#0f0ce6",
   fontWeight: 700,
   fontSize: "20px",
   letterSpacing: "0.3px",
-  color: "#ffff",
+  color: "#f5f6f8",
   padding: "10px",
   border: "none",
   cursor: "pointer",

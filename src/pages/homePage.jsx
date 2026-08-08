@@ -119,31 +119,30 @@ const HomePage = () => {
       // }}
       className="box"
     >
-      
-
-      <h1 className="" id="">Hello World!</h1>
+      <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
+      <h2 style={{ color : "blue"}} id="">Register Form</h2>
       <RegisterForm />
       <p>{count}</p>
       <h1>{count}</h1>
       <h1>{result}</h1>
       {/* <p>{countRef.current}</p> */}
-      <Button
+      <Button style ={{height : "10px", color : "green"}}
       onClick={() =>{
         setCount(count+1);
       }}
       label="Re render" />
-      <Button
+      {/* <Button
         onClick={() => {
           countRef.current++;
         }}
         label="Count Ref"
-      />
+      /> */}
       
 
       {/* <P>{ x + y }</P> */}
 
-      <Greet name="kranti" role="User" isLoggedIn={true} year={2002} />
-
+      <br/>
+      <br/>
       <input
         ref={inputRef}
         name="full_name"
@@ -164,8 +163,11 @@ const HomePage = () => {
 
       <Dashboard isLoggedIn={true} error={null} role={"Admin"} />
       { isLoggedIn ? <Button label="Dashboard" /> : <Button label="Login" /> }
+      < br/>
+      < br/>
       <Button label="Register" />
       <br />
+      < br/>
       <Button label = "Manage Users"/>
       
       {/* <UserCard user = {{name = "Kranti Pariyar", email = "kranti@gmail.com", active : false}} /> */}
@@ -188,15 +190,15 @@ const HomePage = () => {
       </section> */}
 
        <div
-        style={{
-          height: "200px",
-          width: "200px",
-          border: "1px solid gray",
-        }}
-        onClick={(e) => {
-          console.log("Parent clicked");
-          console.log(e.target);
-        }}
+        // style={{
+        //   height: "200px",
+        //   width: "200px",
+        //   border: "1px solid gray",
+        // }}
+        // onClick={(e) => {
+        //   console.log("Parent clicked");
+        //   console.log(e.target);
+        // }}
       >
         {/* // <button
         // type="submit"
@@ -212,7 +214,7 @@ const HomePage = () => {
         </button>)} */}
       </div>  
 
-      <input
+      {/* <input
         name="full_name"
         type="text"
         placeholder="Enter full name"
@@ -226,7 +228,7 @@ const HomePage = () => {
         onBlur={() => {
           console.log("Blur");
         }}
-      ></input>
+      ></input> */}
     </main>
   )
 }

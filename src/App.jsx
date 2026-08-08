@@ -4,6 +4,7 @@ import ContactPage from "./pages/contactPage";
 import HomePage from "./pages/homePage";
 import NotFound from "./pages/not-found";
 import Nav from "./components/nav";
+import UserDetail from "./components/userDetail";
 import ProductDetailPage from "./pages/productDetailPage";
 import ProductPage from "./pages/productPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
@@ -20,9 +21,11 @@ function App() {
 
         {/* dynamic */}
         <Route path = "/products/:id" element={<ProductDetailPage />} />
+        <Route path="/users/:id" element={<UserDetail />} />
 
         {/* page not found */}
         <Route path = "*" element = {<NotFound />} />
+
       </Routes>
     </Router>
   </main>

@@ -1,11 +1,14 @@
 import Card from "./card";
 import { Link } from "react-router";
 
-const UserCard = ({user : {name, email, active,id},
-skills = ["html","CSS"],}) => {
+const UserCard = ({user, skills = ["html","CSS"],}) => {
     // console.log(props);
+    if (!user) return null;
+
+    const { name, email, active, id } = user;
+    
   return (
-    <Link style = {{ textDecoration : "none" }} to = {`users/${id}`}>
+    <Link style = {{ textDecoration : "none" }} to = {`/users/${user.id}`}>
     <div className = "card user-card">
       <Card>
         <img 
